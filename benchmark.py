@@ -84,7 +84,6 @@ def bin_copy(engine1: Engine, engine2: Engine, sel: Select) -> None:
     with conn1.cursor().copy(copy_from_stmt) as copy_from:
         with conn2.cursor().copy(copy_to_stmt) as copy_to:
             for data in copy_from:
-                copy_to.BUFFER_SIZE
                 copy_to.write(data)
 
     conn2.commit()
